@@ -31,7 +31,7 @@ class _TagsInputWidgetState extends State<TagsInputWidget> {
           children: tags.map((tag) => createTag(tag)).toList(),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          padding: const EdgeInsets.symmetric(vertical: 14.0),
           child: TextFormField(
             autocorrect: true,
             autovalidate: true,
@@ -55,12 +55,12 @@ class _TagsInputWidgetState extends State<TagsInputWidget> {
                     fontWeight: FontWeight.w200,
                     color: Colors.black,
                     fontSize: 16.0),
-                border: UnderlineInputBorder(),
+                border: OutlineInputBorder(),
                 hasFloatingPlaceholder: false,
-                hintText: "Write here",
+                hintText: "Add a tag",
                 hintStyle: TextStyle(
                     fontWeight: FontWeight.w200,
-                    color: Colors.black,
+                    color: Colors.black26,
                     fontSize: 18.0)),
           ),
         )

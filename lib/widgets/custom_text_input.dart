@@ -21,7 +21,7 @@ class _CustomTextInputState extends State<CustomTextInput> {
           label: widget.label,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          padding: const EdgeInsets.symmetric(vertical: 14.0),
           child: TextFormField(
             autocorrect: true,
             autovalidate: true,
@@ -38,12 +38,12 @@ class _CustomTextInputState extends State<CustomTextInput> {
                     fontWeight: FontWeight.w200,
                     color: Colors.black,
                     fontSize: 16.0),
-                border: UnderlineInputBorder(),
+                border: OutlineInputBorder(),
                 hasFloatingPlaceholder: false,
                 hintText: "Write here",
                 hintStyle: TextStyle(
                     fontWeight: FontWeight.w200,
-                    color: Colors.black,
+                    color: Colors.black26,
                     fontSize: 18.0)),
           ),
         )
