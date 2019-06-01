@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school/widgets/rounded_button.dart';
+import 'package:flutterpedia/widgets/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override

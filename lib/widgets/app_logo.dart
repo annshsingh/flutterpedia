@@ -7,17 +7,22 @@ class AppLogo extends StatelessWidget {
           child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: FlutterLogo(
+              size: 96.0,
+            ),
+          ),
           RichText(
             text: TextSpan(children: [
-              TextSpan(text: "s", style: TextStyle(color: Colors.purple)),
-              TextSpan(text: "p", style: TextStyle(color: Colors.purple)),
-              TextSpan(text: "ring", style: TextStyle(color: Colors.orange))
-            ], style: TextStyle(fontSize: 80.0, fontWeight: FontWeight.w800)),
+              TextSpan(text: "Flutter", style: TextStyle(color: Colors.blue)),
+              TextSpan(text: "Pedia", style: TextStyle(color: Colors.black))
+            ], style: TextStyle(fontSize: 42.0, fontWeight: FontWeight.w700)),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
-            child: Text("School Parent Ring.",
-                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600)),
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+            child: Text("One Place solution for developers",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500)),
           )
         ],
       ),

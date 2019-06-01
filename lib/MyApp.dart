@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpedia/screens/HomePage.dart';
+import 'package:flutterpedia/screens/selection_screen.dart';
+import 'package:flutterpedia/screens/splash_screen.dart';
+import 'package:flutterpedia/screens/welcome_screen.dart';
 import 'package:flutterpedia/utils.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,10 +15,12 @@ class MyApp extends StatelessWidget {
         canvasColor: Colors.white),
     debugShowCheckedModeBanner: false,
     showPerformanceOverlay: false,
-    home: HomePage(),
-
+    home: SplashScreen(),
     //all the app routes are listed here
-    routes: <String, WidgetBuilder>{},
+    routes: <String, WidgetBuilder>{
+      '/splash':(context)=>SplashScreen(),
+      '/selection':(context)=>SelectionScreen()
+    },
   );
 
   @override

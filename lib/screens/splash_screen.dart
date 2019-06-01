@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:school/widgets/app_logo.dart';
-import 'package:school/widgets/rounded_button.dart';
-import 'package:school/utils/networking.dart' as network;
+import 'package:flutterpedia/widgets/app_logo.dart';
+import 'package:flutterpedia/widgets/rounded_button.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -38,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top:16.0),
-                  child: Text("Terms and Conditions apply",style: TextStyle(color: Colors.black38,fontWeight: FontWeight.w600,fontSize: 16.0,decoration: TextDecoration.underline),),
+                  child: Text("Terms and Conditions",style: TextStyle(color: Colors.black38,fontWeight: FontWeight.w600,fontSize: 16.0,decoration: TextDecoration.underline),),
                 )
               ],
             ),

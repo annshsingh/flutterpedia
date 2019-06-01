@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school/widgets/rounded_button.dart';
+import 'package:flutterpedia/widgets/rounded_button.dart';
 
 class SelectionScreen extends StatefulWidget {
   @override
@@ -14,14 +14,14 @@ class _SelectionScreenState extends State<SelectionScreen> {
   void initState() {
     super.initState();
     items.add({
-      "title": "Parent",
+      "title": "Male",
       "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "image": "images/parent.png"
+      "image": "https://www.shareicon.net/download/2015/09/18/103160_man_512x512.png"
     });
     items.add({
-      "title": "School",
+      "title": "Female",
       "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "image": "images/school.png"
+      "image": "http://www.buddhichal.com/wp-content/uploads/2018/12/avatar-373-456325.png"
     });
   }
   @override
@@ -42,14 +42,14 @@ class _SelectionScreenState extends State<SelectionScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
-                "Choose Your Theme",
+                "Choose Your Avatar",
                 style: TextStyle(fontSize: 48.0, fontWeight: FontWeight.w600),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 18.0),
               child: Text(
-                "Pick a theme that works for you. You can always change themes in your app settings.",
+                "Pick an avatar that works for you. You can always change it in your app settings.",
                 style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400),
               ),
             ),
@@ -96,9 +96,9 @@ class _SelectionScreenState extends State<SelectionScreen> {
               Container(
                 decoration: BoxDecoration(color: Colors.white,
                     boxShadow: [
-                      BoxShadow(color: Colors.pinkAccent.withOpacity(0.05),
-                          blurRadius: 8.0,
-                          spreadRadius: 0.2,
+                      BoxShadow(color: Colors.pinkAccent.withOpacity(0.1),
+                          blurRadius: 20.0,
+                          spreadRadius: 0.5,
                           offset: Offset(0.2, 1.0))
                     ],
                     borderRadius: BorderRadius.circular(16.0)),
@@ -106,7 +106,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Image.asset(item["image"],),
+                    Container(decoration: BoxDecoration(shape: BoxShape.circle,color: Color(0xffeeeeee)),child: Image.network(item["image"],)),
                     Padding(
                       padding: const EdgeInsets.only(top: 16.0),
                       child: Text(
