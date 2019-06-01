@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterpedia/screens/Articles.dart';
 import 'package:flutterpedia/screens/Discussion.dart';
 import 'package:flutterpedia/screens/Jobs.dart';
-import 'package:flutterpedia/screens/Profile.dart';
+import 'package:flutterpedia/screens/Settings.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
 
   //List of all the tabs on Home Screen
-  final List<Widget> _tabs = [Articles(), Jobs(), Discussion(), Profile()];
+  final List<Widget> _tabs = [Articles(), Jobs(), Discussion(), Settings()];
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +66,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle, color: _currentIndex == 3 ? _activeColor : _inActiveColor),
+            icon: Icon(Icons.settings, color: _currentIndex == 3 ? _activeColor : _inActiveColor),
             title: Padding(
               padding: const EdgeInsets.only(top: 4),
-              child: Text('Profile',
+              child: Text('Settings',
                   style: TextStyle(color: _currentIndex == 3 ? _activeColor : _inActiveColor, fontSize: 10, fontWeight: FontWeight.bold)),
             ),
           )
