@@ -13,8 +13,11 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
-  String link = '', type = 'article';
+  String link = '',
+      type = 'article';
   List<String> tags = [];
+
+  Future<bool> submitted;
 
   @override
   void initState() {
@@ -63,7 +66,8 @@ class _PostScreenState extends State<PostScreen> {
               children: <Widget>[
                 CustomTextInput(
                   label: "Add link for your post",
-                  onSubmitted: (val) => setState(() {
+                  onSubmitted: (val) =>
+                      setState(() {
                         if (val.isNotEmpty) {
                           link = val;
                           isLinkAdded = true;
@@ -92,17 +96,20 @@ class _PostScreenState extends State<PostScreen> {
                   },
                 )
               ]
-                  .map((item) => Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.0),
-                        child: item,
-                      ))
+                  .map((item) =>
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: item,
+                  ))
                   .toList(),
             ),
           ),
         ),
         bottomNavigationBar: Container(
           color: isLinkAdded && isOneTagAdded
-              ? Theme.of(context).primaryColor
+              ? Theme
+              .of(context)
+              .primaryColor
               : Colors.grey,
           child: GestureDetector(
             child: Container(
@@ -116,7 +123,7 @@ class _PostScreenState extends State<PostScreen> {
             ),
             onTap: () {
               if (isLinkAdded && isOneTagAdded) {
-                Networking.addPost(
+                var result = Networking.addPost(
                   Post(
                     tags: tags,
                     link: link,
@@ -127,9 +134,10 @@ class _PostScreenState extends State<PostScreen> {
                     user: User.getUser(),
                   ),
                 );
+                result.whenComplete(goBack);
               } else {
                 final snackBar =
-                    SnackBar(content: Text("Please fill all the fields"));
+                SnackBar(content: Text("Please fill all the fields"));
                 Scaffold.of(context).showSnackBar(snackBar);
               }
             },
@@ -143,4 +151,9 @@ class _PostScreenState extends State<PostScreen> {
   void dispose() {
     super.dispose();
   }
+
+  void goBack() {
+    Navigator.of(context).pop();
+  }
+
 }
