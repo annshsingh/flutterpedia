@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpedia/screens/signup_screen.dart';
 import 'package:flutterpedia/widgets/rounded_button.dart';
 
 class SelectionScreen extends StatefulWidget {
@@ -69,12 +70,7 @@ class _SelectionScreenState extends State<SelectionScreen> {
       floatingActionButton: Padding(
         padding:  EdgeInsets.only(bottom: 12.0),
         child: RoundedButton("Continue", onTap: selected==-1?null:(){
-          if(selected==1){
-            Navigator.of(context).pushNamed("/schoolSignin");
-          }
-          else if(selected==0){
-            Navigator.of(context).pushNamed("/parentSignin");
-          }
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUpScreen(url: items[selected]['image'],)));
         },nextIcon: true,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

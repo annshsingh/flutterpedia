@@ -38,11 +38,7 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldKey,
       body: _tabs[_currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _scaffoldKey.currentState.showSnackBar(
-              SnackBar(
-                content: Text("You clicked on the FAB"),
-              ),
-            ),
+        onPressed: () => Navigator.of(context).pushNamed('/post'),
         child: Icon(Icons.add),
         foregroundColor: Colors.white,
         backgroundColor: Colors.orange,
