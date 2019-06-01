@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpedia/widgets/app_logo.dart';
 import 'package:flutterpedia/widgets/rounded_button.dart';
+import 'package:flutter/services.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,6 +12,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(// navigation bar color
+      statusBarColor: Colors.white, // status bar color
+    ));
 
   }
   @override
