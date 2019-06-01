@@ -14,17 +14,14 @@ class _JobsState extends State<Jobs> {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Container(
-          child: Center(
-            child: Text(
-              'Jobs',
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                  fontFamily: Utils.ubuntuRegularFont),
-            ),
-          ),
+        centerTitle: true,
+        title: Text(
+          'Jobs',
+          style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+              fontFamily: Utils.ubuntuRegularFont),
         ),
       ),
     );

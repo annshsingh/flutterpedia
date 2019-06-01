@@ -14,17 +14,14 @@ class _DiscussionState extends State<Discussion> {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Container(
-          child: Center(
-            child: Text(
-              'Discussion',
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                  fontFamily: Utils.ubuntuRegularFont),
-            ),
-          ),
+        centerTitle: true,
+        title: Text(
+          'Discussion',
+          style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+              fontFamily: Utils.ubuntuRegularFont),
         ),
       ),
     );

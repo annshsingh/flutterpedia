@@ -5,7 +5,6 @@ import 'package:flutterpedia/screens/post_add_screen.dart';
 import 'package:flutterpedia/screens/selection_screen.dart';
 import 'package:flutterpedia/screens/signup_screen.dart';
 import 'package:flutterpedia/screens/splash_screen.dart';
-import 'package:flutterpedia/screens/welcome_screen.dart';
 import 'package:flutterpedia/utils.dart';
 
 class MyApp extends StatelessWidget {
