@@ -19,4 +19,10 @@ class User{
       "profilePic":profilePic
     };
   }
+  static User getUser(){
+    return _user;
+  }
+  static void setUser(User user){
+    _user=user;
+  }
 }
