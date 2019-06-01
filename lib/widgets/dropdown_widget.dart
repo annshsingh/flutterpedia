@@ -34,7 +34,7 @@ class _TypeSelectionWidgetState extends State<TypeSelectionWidget> {
               ),
               DropdownMenuItem(
                 child: Text("Discussion"),
-                value: "other",
+                value: "Discussion",
               ),
             ],
             onChanged: (val) {

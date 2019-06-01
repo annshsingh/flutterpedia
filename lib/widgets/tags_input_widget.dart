@@ -71,7 +71,7 @@ class _TagsInputWidgetState extends State<TagsInputWidget> {
   Widget createTag(String tag) {
     return Container(
       decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          color: Colors.purple,
           borderRadius: BorderRadius.circular(25.0)),
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       margin: EdgeInsets.fromLTRB(0.0, 8.0, 10.0, 0.0),

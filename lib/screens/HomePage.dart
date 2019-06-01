@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterpedia/screens/Articles.dart';
 import 'package:flutterpedia/screens/Discussion.dart';
 import 'package:flutterpedia/screens/Jobs.dart';
-import 'package:flutterpedia/screens/Profile.dart';
+import 'package:flutterpedia/screens/Settings.dart';
 
 class HomePage extends StatefulWidget {
   @override

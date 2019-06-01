@@ -18,6 +18,7 @@ class Networking{
      }
   }
   static Future<bool> addPost(Post post)async{
+    print(post.link);
     http.Response response=await http.post(url+"user/post",body: jsonEncode(post.toJson()),headers: {"Content-Type":"application/json"});
     print(response.body);
     if(response.statusCode==404){

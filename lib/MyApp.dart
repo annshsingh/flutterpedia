@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         fontFamily: Utils.ubuntuFont,),
     debugShowCheckedModeBanner: false,
     showPerformanceOverlay: false,
-    home: HomePage(),
+    home: SplashScreen(),
     //all the app routes are listed here
     routes: <String, WidgetBuilder>{
       '/home':(context)=>HomePage(),
