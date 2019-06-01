@@ -31,6 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         iconTheme: IconThemeData(color: Colors.black),
         centerTitle: true,
         elevation: 0.0,
+        brightness: Brightness.light,
       ),
       body: SingleChildScrollView(
         child: Padding(

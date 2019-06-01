@@ -21,14 +21,12 @@ class _DiscussionState extends State<Discussion> {
     refresh();
   }
   Future<Null> refresh(){
-    setState(() {
-      articles.clear();
-    });
+
     return Networking.getPosts('discussion').then((val){
       setState(() {
         this.articles=val;
       });
-      key.currentState.show(atTop: false);
+      key.currentState.show(atTop: true);
     });
   }
   final GlobalKey<RefreshIndicatorState>key=GlobalKey<RefreshIndicatorState>();

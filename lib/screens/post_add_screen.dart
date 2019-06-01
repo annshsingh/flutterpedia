@@ -121,6 +121,7 @@ class _PostScreenState extends State<PostScreen> {
             onTap: () {
               print("$isLinkAdded $isOneTagAdded");
               if (isLinkAdded && isOneTagAdded) {
+                showDialogScreen();
                 var result = Networking.addPost(
                   Post(
                     tags: tags,
@@ -144,7 +145,23 @@ class _PostScreenState extends State<PostScreen> {
       ),
     );
   }
+  void showDialogScreen() {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Posting"),
+            content: Container(
+              alignment: Alignment.center,
+              height: 100.0,
+              child: CircularProgressIndicator(
 
+              ),
+            ),
+          );
+        });
+  }
   @override
   void dispose() {
     super.dispose();
@@ -152,6 +169,8 @@ class _PostScreenState extends State<PostScreen> {
 
   void goBack() {
     Navigator.of(context).pop();
+    Navigator.of(context).pop();
+
   }
 
 }

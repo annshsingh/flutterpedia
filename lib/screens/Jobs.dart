@@ -22,14 +22,12 @@ class _JobsState extends State<Jobs> {
     refresh();
   }
   Future<Null> refresh(){
-    setState(() {
-      articles.clear();
-    });
+
     return Networking.getPosts('job').then((val){
       setState(() {
         this.articles=val;
       });
-      key.currentState.show(atTop: false);
+      key.currentState.show(atTop: true);
     });
   }
   final GlobalKey<RefreshIndicatorState>key=GlobalKey<RefreshIndicatorState>();

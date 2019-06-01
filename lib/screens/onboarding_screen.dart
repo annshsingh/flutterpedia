@@ -18,17 +18,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     items.add({
       "title": "Save Your Time",
       "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "image": "images/welcome.png"
+      "image": "https://miro.medium.com/max/840/0*VhiinSj3c-EXD0QX"
     });
     items.add({
       "title": "Monitor Activities",
       "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "image": "images/welcome.png"
+      "image": "https://miro.medium.com/max/840/0*VhiinSj3c-EXD0QX"
     });
     items.add({
       "title": "Monitor Activities",
       "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "image": "images/welcome.png"
+      "image": "https://miro.medium.com/max/840/0*VhiinSj3c-EXD0QX"
     });
   }
 
@@ -39,9 +39,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         centerTitle: true,
+        brightness: Brightness.light,
         elevation: 0.0,
         actions: <Widget>[
-          FlatButton(onPressed: (){}, child: Text("Skip",style: TextStyle(fontSize: 18.0,color:Colors.purple),))
+          FlatButton(onPressed: (){
+            Navigator.of(context).pushNamed('/home');
+          }, child: Text("Skip",style: TextStyle(fontSize: 18.0,color:Colors.purple),))
         ],
       ),
       body: Column(
@@ -105,13 +108,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Image.asset(item["image"], width: MediaQuery
-              .of(context)
-              .size
-              .width / 2, height: MediaQuery
-              .of(context)
-              .size
-              .width / 2,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(item["image"], width: MediaQuery
+                  .of(context)
+                  .size
+                  .width / 2, height: MediaQuery
+                  .of(context)
+                  .size
+                  .width / 2,fit: BoxFit.cover,),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Text(

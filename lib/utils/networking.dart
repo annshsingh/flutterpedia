@@ -33,6 +33,9 @@ class Networking{
     http.Response response=await http.get(url);
     Map json=jsonDecode(response.body);
     List<Post>posts=[];
+    if(json==null){
+      return posts;
+    }
     json.forEach((key,val){
       posts.add(Post.fromJson(val));
     });

@@ -19,14 +19,12 @@ class _ArticlesState extends State<Articles> {
     refresh();
   }
   Future<Null> refresh(){
-    setState(() {
-      articles.clear();
-    });
+
     return Networking.getPosts('article').then((val){
       setState(() {
         this.articles=val;
       });
-      key.currentState.show(atTop: false);
+      key.currentState.show(atTop: true);
     });
   }
   final GlobalKey<RefreshIndicatorState>key=GlobalKey<RefreshIndicatorState>();
@@ -72,7 +70,6 @@ class _ArticlesState extends State<Articles> {
         ],
       ),
       body: RefreshIndicator(
-
         onRefresh: refresh,
         key: key,
         child: articles.length==0?Center(
