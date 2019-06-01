@@ -5,7 +5,6 @@ import 'package:flutterpedia/modals/user.dart';
 import 'package:flutterpedia/utils/networking.dart';
 import 'package:flutterpedia/widgets/custom_text_input.dart';
 import 'package:flutterpedia/widgets/dropdown_widget.dart';
-import 'package:flutterpedia/widgets/rounded_button.dart';
 import 'package:flutterpedia/widgets/tags_input_widget.dart';
 
 class PostScreen extends StatefulWidget {
@@ -14,12 +13,16 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
-  String link='',type='article';
-  List<String>tags=[];
+  String link = '', type = 'article';
+  List<String> tags = [];
+
   @override
   void initState() {
     super.initState();
   }
+
+  bool isLinkAdded = false;
+  bool isOneTagAdded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,7 @@ class _PostScreenState extends State<PostScreen> {
               brightness: Brightness.dark,
               title: Text(
                 "Post",
-                style: TextStyle(fontSize: 22.0,color: Colors.black),
+                style: TextStyle(fontSize: 22.0, color: Colors.black),
               ),
               actions: <Widget>[
                 IconButton(
@@ -58,29 +61,33 @@ class _PostScreenState extends State<PostScreen> {
             body: ListView(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               children: <Widget>[
-//                CustomTextInput(
-//                  label: "Add an interesting title",
-//                ),
-//                CustomTextInput(
-//                  label: "Give your post some description",
-//                ),
                 CustomTextInput(
                   label: "Add link for your post",
-                  onSubmitted: (val)=>setState((){
-                    link=val;
-                  }),
+                  onSubmitted: (val) => setState(() {
+                        if (val.isNotEmpty) {
+                          link = val;
+                          isLinkAdded = true;
+                        } else {
+                          isLinkAdded = false;
+                        }
+                      }),
                 ),
                 TagsInputWidget(
-                  onSubmitted: (tags){
+                  onSubmitted: (tags) {
                     setState(() {
-                      this.tags=tags;
+                      if (tags.isNotEmpty) {
+                        this.tags = tags;
+                        isOneTagAdded = true;
+                      } else {
+                        isOneTagAdded = false;
+                      }
                     });
                   },
                 ),
                 TypeSelectionWidget(
-                  onSubmitted: (val){
+                  onSubmitted: (val) {
                     setState(() {
-                      this.type=val;
+                      this.type = val;
                     });
                   },
                 )
@@ -94,21 +101,38 @@ class _PostScreenState extends State<PostScreen> {
           ),
         ),
         bottomNavigationBar: Container(
-          color: Theme.of(context).primaryColor,
-          child: RoundedButton(
-            "Create Post",
+          color: isLinkAdded && isOneTagAdded
+              ? Theme.of(context).primaryColor
+              : Colors.grey,
+          child: GestureDetector(
+            child: Container(
+              height: 54,
+              child: Center(
+                child: Text(
+                  "Create Post",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
             onTap: () {
-              Networking.addPost(Post(
-                tags: tags,
-                link:link,
-                title: '',
-                description: '',
-                image: '',
-                type: type,
-                user:User.getUser()
-              ));
+              if (isLinkAdded && isOneTagAdded) {
+                Networking.addPost(
+                  Post(
+                    tags: tags,
+                    link: link,
+                    title: '',
+                    description: '',
+                    image: '',
+                    type: type,
+                    user: User.getUser(),
+                  ),
+                );
+              } else {
+                final snackBar =
+                    SnackBar(content: Text("Please fill all the fields"));
+                Scaffold.of(context).showSnackBar(snackBar);
+              }
             },
-            shadow: false,
           ),
         ),
       ),
