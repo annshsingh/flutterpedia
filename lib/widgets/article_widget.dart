@@ -58,7 +58,7 @@ class _ArticleWidgetState extends State<ArticleWidget> {
               padding: const EdgeInsets.only(right:4.0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
-                child: Image.network(post.image,width: 96.0,height: 96.0,fit: BoxFit.cover,),
+                child: Image.network(post.image??'',width: 96.0,height: 96.0,fit: BoxFit.cover,),
               ),
             )
           ],

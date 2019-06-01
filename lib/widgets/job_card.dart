@@ -24,7 +24,7 @@ class _JobCardState extends State<JobCard> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: Image.network(
-                post.image,
+                post.image??'',
                 width: 105.0,
                 height: 105.0,
                 fit: BoxFit.cover,
