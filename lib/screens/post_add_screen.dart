@@ -43,7 +43,7 @@ class _PostScreenState extends State<PostScreen> {
               centerTitle: true,
               elevation: 0.0,
               leading: Container(),
-              brightness: Brightness.dark,
+              brightness: Brightness.light,
               title: Text(
                 "Post",
                 style: TextStyle(fontSize: 22.0, color: Colors.black),
