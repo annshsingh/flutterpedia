@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterpedia/modals/post.dart';
+import 'package:flutterpedia/modals/user.dart';
+import 'package:flutterpedia/utils/networking.dart';
 import 'package:flutterpedia/widgets/custom_text_input.dart';
 import 'package:flutterpedia/widgets/dropdown_widget.dart';
 import 'package:flutterpedia/widgets/rounded_button.dart';
@@ -94,7 +97,17 @@ class _PostScreenState extends State<PostScreen> {
           color: Theme.of(context).primaryColor,
           child: RoundedButton(
             "Create Post",
-            onTap: () {},
+            onTap: () {
+              Networking.addPost(Post(
+                tags: tags,
+                link:link,
+                title: '',
+                description: '',
+                image: '',
+                type: type,
+                user:User.getUser()
+              ));
+            },
             shadow: false,
           ),
         ),
