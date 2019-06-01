@@ -28,9 +28,14 @@ class Networking{
       return true;
     }
   }
-  static Future<List<Post>> getPosts(String type,int page)async{
-    String url='https://flutterpedia-5bb3d.firebaseio.com/posts/article.json';
+  static Future<List<Post>> getPosts(String type)async{
+    String url='https://flutterpedia-5bb3d.firebaseio.com/posts/$type.json';
     http.Response response=await http.get(url);
-
+    Map json=jsonDecode(response.body);
+    List<Post>posts=[];
+    json.forEach((key,val){
+      posts.add(Post.fromJson(val));
+    });
+    return posts;
   }
 }

@@ -74,13 +74,10 @@ class _PostScreenState extends State<PostScreen> {
                 ),
                 TagsInputWidget(
                   onSubmitted: (tags) {
+                    this.tags = tags;
+                    isOneTagAdded = tags.length>0;
                     setState(() {
-                      if (tags.isNotEmpty) {
-                        this.tags = tags;
-                        isOneTagAdded = true;
-                      } else {
-                        isOneTagAdded = false;
-                      }
+
                     });
                   },
                 ),
@@ -110,11 +107,12 @@ class _PostScreenState extends State<PostScreen> {
               child: Center(
                 child: Text(
                   "Create Post",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white,fontSize: 18.0),
                 ),
               ),
             ),
             onTap: () {
+              print("$isLinkAdded $isOneTagAdded");
               if (isLinkAdded && isOneTagAdded) {
                 Networking.addPost(
                   Post(

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpedia/modals/post.dart';
 import 'package:flutterpedia/modals/user.dart';
+import 'package:flutterpedia/screens/profile_screen.dart';
 import 'package:flutterpedia/utils.dart';
+import 'package:flutterpedia/utils/networking.dart';
+import 'package:flutterpedia/widgets/article_widget.dart';
 import 'package:flutterpedia/widgets/job_card.dart';
+
+import 'discussion_card.dart';
 
 class Jobs extends StatefulWidget {
   @override
@@ -10,6 +15,24 @@ class Jobs extends StatefulWidget {
 }
 
 class _JobsState extends State<Jobs> {
+  List<Post>articles=[];
+  @override
+  void initState() {
+    super.initState();
+    refresh();
+  }
+  Future<Null> refresh(){
+    setState(() {
+      articles.clear();
+    });
+    return Networking.getPosts('job').then((val){
+      setState(() {
+        this.articles=val;
+      });
+      key.currentState.show(atTop: false);
+    });
+  }
+  final GlobalKey<RefreshIndicatorState>key=GlobalKey<RefreshIndicatorState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,33 +41,51 @@ class _JobsState extends State<Jobs> {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 8.0),
+          child: FlutterLogo(size: 18.0,),
+        ),
         title: Text(
-          'Jobs',
+          'Job',
           style: TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
               fontFamily: Utils.ubuntuRegularFont),
         ),
+        actions: <Widget>[
+          GestureDetector(
+            child: Padding(
+              padding:
+              const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 16.0),
+              child: CircleAvatar(
+                radius: 20.0,
+                backgroundImage: NetworkImage(User
+                    .getUser()
+                    .profilePic),
+              ),
+            ),
+            onTap: () =>
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) =>
+                        ProfileScreen()
+                ),
+          ),
+        ],
       ),
-      body: Center(
-        child:JobCard(post: Post(
-            description: "I faced this issue when I used latest firebase package in my Flutter App. I spent about 10 days trying to solve this problem. Luckily I found the solution for migrating my “Flutter App” to “AndroidX”…",
-            image: "https://cdn-images-1.medium.com/max/1200/1*FRkiK7sME-78WXRYiEOnqQ.png",
-            link: "https://medium.com/@swhussain110/how-to-migrate-your-flutter-app-to-androidx-9a78eaaa924b",
-            tags: [
-              "Development",
-              "Issue"
-            ],
-            title: "How to migrate your Flutter App to AndroidX – Syed Wajahat Hussain – Medium",
-            type: "article",
-            user: User(
-                id: "singhbhavneet",
-                name: "Bhavneet",
-                profilePic: "https://www.shareicon.net/download/2015/09/18/103160_man_512x512.png"
-            )
-        ),)
+      body: RefreshIndicator(
+
+        onRefresh: refresh,
+        key: key,
+        child: articles.length==0?Center(
+          child: CircularProgressIndicator(),
+        ):ListView.separated(separatorBuilder: (context,index)=>Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          child: Divider(),
+        ),itemBuilder: (context,index)=>JobCard(post: articles[index],),itemCount: articles.length,),
       ),
     );
   }
+
 }
