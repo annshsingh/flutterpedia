@@ -1,4 +1,5 @@
 # Flutterpedia
+### App that bagged the first prize from Delhi hub :tada:
 
 A flutter application that will help developers to find relevant information for a link be it a medium article, a job or a stackoverflow discussion.
 
